@@ -9,6 +9,8 @@ export const FirstPage = (props) => {
     const [selectedType, setSelectedType] = useState(0)
     return <main className={styles.main}>
         <TypeList types={types} selectedTypes={selectedType} setSelectedTypes={setSelectedType}/>
-        <BooksList books={props.books.filter((item) => {return item.type === types[selectedType]})}/>
+        <BooksList books={props.books.filter((item) => {
+            return item.type === types[selectedType]
+        })}/>
     </main>
 };

@@ -48,9 +48,16 @@
     font-size: 1.1em;
 }
 
+.bookButtons__text_count_disabled {
+    margin: auto;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+    padding: 10px;
+}
+
 .bookButtons__text_count {
     margin: auto;
-    color: rgba(0, 0, 0, 0.5);;
+    color: black;
     font-size: 1.1em;
     padding: 10px;
 }

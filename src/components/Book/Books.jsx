@@ -6,8 +6,9 @@ import styles from './style.module.css'
 
 export const Book = ({book}) => {
     const [count, setCount] = useState(0)
+    console.log(book.id, book.annotation)
     return <article className={styles.books}>
-        <div >
+        <div>
             <h2 className={styles.books__book_title}>{book.title}</h2>
             <p className={styles.books__book_text}>{book.author}</p>
             <p className={styles.books__book_text}>{book.genre}</p>
