@@ -1,0 +1,7 @@
+.bookAnnotation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3.5%;
+    margin: auto;
+    padding: 20px;
+}

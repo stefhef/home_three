@@ -7,7 +7,7 @@ import {useState} from "react";
 export const FirstPage = (props) => {
     const types = Array.from(new Set(props.books.map((book) => book.type)))
     const [selectedType, setSelectedType] = useState(0)
-    return <main className={styles.main}>
+    return <main className={styles.main__firstPage}>
         <TypeList types={types} selectedTypes={selectedType} setSelectedTypes={setSelectedType}/>
         <BooksList books={props.books.filter((item) => {
             return item.type === types[selectedType]
