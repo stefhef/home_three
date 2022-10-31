@@ -4,7 +4,7 @@ import {BookButtons} from "../BookButtons/BookButtons";
 import styles from './style.module.css'
 
 
-export const Book = ({book}) => {
+export const Book = ({book, counterPlace}) => {
     const [count, setCount] = useState(0)
     console.log(book.id, book.annotation)
     return <article className={styles.books}>
@@ -14,8 +14,6 @@ export const Book = ({book}) => {
             <p className={styles.books__book_text}>{book.genre}</p>
             <h2 className={styles.books__book_price}>{book.price} ₽</h2>
         </div>
-        <div>
-            <BookButtons count={count} setCount={setCount}/>
-        </div>
+        <BookButtons place={counterPlace} count={count} setCount={setCount}/>
     </article>
 }

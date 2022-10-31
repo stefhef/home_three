@@ -4,7 +4,7 @@ import {Annotation} from "../Annotation/Annotation";
 
 export const BookAnnotation = ({book, annotation}) => {
     return <div className={styles.bookAnnotation}>
-        <Book book={book}/>
+        <Book counterPlace={'reviews'} book={book}/>
         <Annotation annotation={annotation}/>
     </div>
 }
