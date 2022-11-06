@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:js": "npx eslint --fix ./src",
+    "lint:css": "npx stylelint --fix \"src/**.css\""
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +37,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "stylelint": "^14.14.1",
+    "stylelint-config-standard": "^29.0.0"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "indentation": "tab"
+    }
   }
 }
