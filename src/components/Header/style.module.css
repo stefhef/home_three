@@ -19,3 +19,7 @@
     width: 75%;
     height: auto;
 }
+
+.header__link {
+    text-decoration: none;
+}
