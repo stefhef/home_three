@@ -18,5 +18,3 @@ export const selectIsBooksLoading = (state) =>
 
 export const selectBooksTypes = (state) => selectBookModule(state).types;
 export const selectBooksIds = (state) => selectBookModule(state).ids;
-
-export const selectActiveType = (state) => selectBookModule(state).activeType;

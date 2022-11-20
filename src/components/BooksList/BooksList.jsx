@@ -8,7 +8,6 @@ import { selectBooksByType } from "../../store/book/selectors";
 
 export const BooksList = memo(function () {
   const { typeId } = useParams();
-  console.log(`TypeId: ${typeId}`);
 
   const books = useSelector((state) =>
     selectBooksByType(state, Number(typeId))

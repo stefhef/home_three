@@ -21,7 +21,6 @@ export const bookSlice = createSlice({
       state.types = Array.from(
         new Set(Object.values(action.payload.entities).map((book) => book.type))
       );
-      state.activeType = state.types[0];
     },
     failLoading: (state) => {
       state.status = Statuses.failed;

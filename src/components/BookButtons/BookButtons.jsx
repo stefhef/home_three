@@ -31,7 +31,7 @@ export const BookButtons = ({ place, bookId }) => {
             : styles.bookButtons__text_count
         }
       >
-        {count}
+        {count ? count : 0}
       </p>
       <button
         className={styles.bookButtons__button}

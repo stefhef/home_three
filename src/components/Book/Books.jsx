@@ -1,11 +1,8 @@
 import { BookButtons } from "../BookButtons/BookButtons";
-import { selectBookById } from "../../store/book/selectors";
-import { useSelector } from "react-redux";
 
 import styles from "./style.module.css";
 
 export const Book = ({ book, counterPlace }) => {
-  // const book = useSelector((state) => selectBookById(state, bookId));
   if (!book) {
     return <h1>Ошибка. Книги не найдены</h1>;
   }

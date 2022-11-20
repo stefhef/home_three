@@ -9,7 +9,7 @@ export const cartSlice = createSlice({
     },
     removeBook: (state, action) => {
       state[action.payload] =
-        state[action.payload] === 0 ? 0 : state[action.payload];
+        state[action.payload] === 0 ? 0 : state[action.payload] - 1;
     },
   },
 });
