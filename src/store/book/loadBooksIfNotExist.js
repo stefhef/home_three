@@ -1,7 +1,6 @@
 import { bookSlice } from "./index";
 import { prepareData } from "../utils";
 import { selectBooks } from "./selectors";
-import { Statuses } from "../../constants/statuses";
 
 export const loadBooksIfNotExist = (dispatch, getState) => {
   if (selectBooks(getState())?.length > 0) {
@@ -14,6 +13,6 @@ export const loadBooksIfNotExist = (dispatch, getState) => {
       dispatch(bookSlice.actions.successLoading(prepareData(books)));
     })
     .catch(() => {
-      dispatch(bookSlice.actions.failingLoading(Statuses.failed));
+      dispatch(bookSlice.actions.failLoading());
     });
 };

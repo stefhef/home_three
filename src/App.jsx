@@ -4,6 +4,8 @@ import { Header } from "./components/Header/Header";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { NotFoundPage } from "./pages/NotFoundpage/NotFoundPage";
+import { BooksList } from "./components/BooksList/BooksList";
 
 export const App = () => {
   return (
@@ -11,8 +13,12 @@ export const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<FirstPage />} />
-          <Route path={"/reviews"} element={<ReviewsPage />} />
+          <Route index element={<h1>Главная страница</h1>} />
+          <Route path={"/books"} element={<FirstPage />}>
+            <Route path={":typeId"} element={<BooksList />} />
+          </Route>
+          <Route path={"/reviews"} element={<ReviewsPage />}></Route>
+          <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

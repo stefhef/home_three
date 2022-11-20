@@ -34,9 +34,9 @@ async def get_books(session: AsyncSession = Depends(get_session)):
        books.price,
        books.annotation
 FROM books
-         INNER JOIN types ON books.id = types.id
-         INNER JOIN genres ON books.id = genres.id
-         INNER JOIN authors ON books.id = authors.id""")
+         INNER JOIN types ON books.type = types.id
+         INNER JOIN genres ON books.genre = genres.id
+         INNER JOIN authors ON books.author = authors.id""")
 
     query_r = await session.execute("""
     SELECT 
@@ -81,9 +81,9 @@ async def get_books(book_id, session: AsyncSession = Depends(get_session)):
        books.price,
        books.annotation
 FROM books
-         INNER JOIN types ON books.id = types.id
-         INNER JOIN genres ON books.id = genres.id
-         INNER JOIN authors ON books.id = authors.id
+         INNER JOIN types ON books.type = types.id
+         INNER JOIN genres ON books.genre = genres.id
+         INNER JOIN authors ON books.author = authors.id
          WHERE books.id = {book_id}""")
     books = query.all()
     return books

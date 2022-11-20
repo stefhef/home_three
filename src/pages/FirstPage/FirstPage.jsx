@@ -3,32 +3,26 @@ import { BooksList } from "../../components/BooksList/BooksList";
 import styles from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBooks } from "../../store/book/selectors";
+import { selectBooks, selectIsBooksLoading } from "../../store/book/selectors";
 import { loadBooksIfNotExist } from "../../store/book/loadBooksIfNotExist";
+import { Outlet } from "react-router-dom";
 
 export const FirstPage = () => {
   const dispatch = useDispatch();
   const books = useSelector((state) => selectBooks(state));
-  console.log(books);
-  const types = Array.from(new Set(books.map((book) => book.type)));
-  const [selectedType, setSelectedType] = useState(0);
-
   useEffect(() => {
     dispatch(loadBooksIfNotExist);
   }, []);
 
+  const isLoading = useSelector((state) => selectIsBooksLoading(state));
+  if (isLoading) {
+    return <h2>Загрузка</h2>;
+  }
+
   return (
     <main className={styles.main__firstPage}>
-      <TypeList
-        types={types}
-        selectedTypes={selectedType}
-        setSelectedTypes={setSelectedType}
-      />
-      <BooksList
-        books={books.filter((item) => {
-          return item.type === types[selectedType];
-        })}
-      />
+      <TypeList />
+      <Outlet />
     </main>
   );
 };
