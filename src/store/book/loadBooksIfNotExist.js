@@ -1,7 +1,6 @@
 import { bookSlice } from "./index";
 import { prepareData } from "../utils";
 import { selectBooks } from "./selectors";
-
 export const loadBooksIfNotExist = (dispatch, getState) => {
   if (selectBooks(getState())?.length > 0) {
     return;

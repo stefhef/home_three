@@ -7,8 +7,8 @@ const initialState = {
   status: Statuses.idle,
 };
 
-export const bookSlice = createSlice({
-  name: "book",
+export const reviewSlice = createSlice({
+  name: "review",
   initialState,
   reducers: {
     startLoading: (state) => {
@@ -18,9 +18,6 @@ export const bookSlice = createSlice({
       state.status = Statuses.success;
       state.entities = { ...state.entities, ...action.payload.entities };
       state.ids = Array.from(new Set([...state.ids, ...action.payload.ids]));
-      state.types = Array.from(
-        new Set(Object.values(action.payload.entities).map((book) => book.type))
-      );
     },
     failLoading: (state) => {
       state.status = Statuses.failed;

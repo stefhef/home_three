@@ -5,13 +5,15 @@ export const selectBookModule = (state) => state.book;
 export const selectBooks = (state) =>
   Object.values(selectBookModule(state).entities);
 
+export const selectBookById = (state, bookId) => selectBooks(state)[bookId];
+
 export const selectBooksByType = (state, typeId) =>
-  Object.values(selectBookModule(state).entities).filter(
+  selectBooks(state).filter(
     (book) => book.type === selectBookModule(state).types[typeId]
   );
 
 export const selectBooksReviewsIds = (state, bookId) =>
-  selectBookModule(state).entities[bookId].reviews;
+  selectBooks(state)[bookId].reviews;
 
 export const selectIsBooksLoading = (state) =>
   selectBookModule(state).status === Statuses.inProgress;

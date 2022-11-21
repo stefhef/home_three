@@ -1,6 +1,7 @@
 import { BookButtons } from "../BookButtons/BookButtons";
 
 import styles from "./style.module.css";
+import { Link } from "react-router-dom";
 
 export const Book = ({ book, counterPlace }) => {
   if (!book) {
@@ -9,7 +10,9 @@ export const Book = ({ book, counterPlace }) => {
   return (
     <article className={styles.books}>
       <div>
-        <h2 className={styles.books__book_title}>{book.title}</h2>
+        <Link to={`/reviews/${book.id}`}>
+          <h2 className={styles.books__book_title}>{book.title}</h2>
+        </Link>
         <p className={styles.books__book_text}>{book.author}</p>
         <p className={styles.books__book_text}>{book.genre}</p>
         <h2 className={styles.books__book_price}>{book.price} ₽</h2>

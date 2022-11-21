@@ -8,7 +8,6 @@ from db.db import init_db, get_session
 
 app = FastAPI()
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,6 +15,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.on_event("startup")
 async def startup():
@@ -50,10 +50,10 @@ FROM reviews
     reviews = query_r.all()
     res = {}
     for rev_id, book in reviews:
-        if rev_id not in res:
-            res[rev_id] = [book]
+        if book not in res:
+            res[book] = [rev_id]
         else:
-            res[rev_id].append(book)
+            res[book].append(rev_id)
     result = []
     for book in books:
         i = {"id": book[0],
@@ -63,10 +63,11 @@ FROM reviews
              "title": book[4],
              "score": book[5],
              "price": book[6],
-             "annotation": book[7]}
+             "annotation": book[7],
+             "reviews": res[book[0]],
+             }
         result.append(i)
     return result
-    # return json.dumps(result)
 
 
 @app.get("/get_book/{id}")
@@ -87,6 +88,26 @@ FROM books
          WHERE books.id = {book_id}""")
     books = query.all()
     return books
+
+
+@app.get("/get_all_reviews")
+async def get_reviews(session: AsyncSession = Depends(get_session)):
+    query = await session.execute(f"""
+    SELECT reviews.id,
+    reviews.text,
+    reviews.score,
+    authors.name
+FROM reviews
+         INNER JOIN authors ON reviews.author = authors.id""")
+    reviews = query.all()
+    result = []
+    for review in reviews:
+        i = {"id": review[0],
+             "text": review[1],
+             "score": review[2],
+             "author": review[3]}
+        result.append(i)
+    return result
 
 
 if __name__ == "__main__":

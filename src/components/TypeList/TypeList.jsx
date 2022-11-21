@@ -8,19 +8,20 @@ export const TypeList = () => {
   const types = useSelector((state) => selectBooksTypes(state));
   return (
     <article className={styles.typeList}>
-      {types.map((type, index) => (
-        <NavLink
-          key={index}
-          to={"/books/" + String(index)}
-          className={({ isActive }) =>
-            classnames(styles.typeList__button, {
-              [styles.typeList__button_active]: isActive,
-            })
-          }
-        >
-          {type}
-        </NavLink>
-      ))}
+      {types &&
+        types.map((type, index) => (
+          <NavLink
+            key={index}
+            to={"/books/" + String(index)}
+            className={({ isActive }) =>
+              classnames(styles.typeList__button, {
+                [styles.typeList__button_active]: isActive,
+              })
+            }
+          >
+            {type}
+          </NavLink>
+        ))}
     </article>
   );
 };

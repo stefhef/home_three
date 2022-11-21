@@ -14,10 +14,12 @@ export const App = () => {
         <Header />
         <Routes>
           <Route index element={<h1>Главная страница</h1>} />
+          <Route path={"/reviews"}>
+            <Route path={":bookId"} element={<ReviewsPage />} />
+          </Route>
           <Route path={"/books"} element={<FirstPage />}>
             <Route path={":typeId"} element={<BooksList />} />
           </Route>
-          <Route path={"/reviews"} element={<ReviewsPage />}></Route>
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
