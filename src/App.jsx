@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NotFoundPage } from "./pages/NotFoundpage/NotFoundPage";
-import { BooksList } from "./components/BooksList/BooksList";
 import { CartPage } from "./pages/CartPage/CartPage";
+import { BooksIdsTypes } from "./components/BooksIdsTypes/BooksIdsTypes";
 
 export const App = () => {
   return (
@@ -19,7 +19,7 @@ export const App = () => {
             <Route path={":bookId"} element={<ReviewsPage />} />
           </Route>
           <Route path={"/books"} element={<FirstPage />}>
-            <Route path={":typeId"} element={<BooksList />} />
+            <Route path={":typeId"} element={<BooksIdsTypes />} />
           </Route>
           <Route path={"/cart"} element={<CartPage />} />
           <Route path={"*"} element={<NotFoundPage />} />
