@@ -6,6 +6,7 @@ import { store } from "./store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NotFoundPage } from "./pages/NotFoundpage/NotFoundPage";
 import { BooksList } from "./components/BooksList/BooksList";
+import { CartPage } from "./pages/CartPage/CartPage";
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
           <Route path={"/books"} element={<FirstPage />}>
             <Route path={":typeId"} element={<BooksList />} />
           </Route>
+          <Route path={"/cart"} element={<CartPage />} />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

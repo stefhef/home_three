@@ -8,9 +8,9 @@ export const Header = () => {
       <Link to={"/books/0"} className={styles.header__link}>
         <h2 className={styles.header__text}>Магазин</h2>
       </Link>
-      <a href={"/cart"}>
+      <Link to={"/cart"}>
         <img className={styles.header__cart} src={cart} alt={"Корзина"} />
-      </a>
+      </Link>
     </header>
   );
 };

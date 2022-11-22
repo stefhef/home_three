@@ -5,12 +5,12 @@ export const selectBookModule = (state) => state.book;
 export const selectBooks = (state) =>
   Object.values(selectBookModule(state).entities);
 
-export const selectBookById = (state, bookId) => selectBooks(state)[bookId];
+export const selectBookById = (state, bookId) => selectBooks(state)[bookId - 1];
 
-export const selectBooksByType = (state, typeId) =>
-  selectBooks(state).filter(
-    (book) => book.type === selectBookModule(state).types[typeId]
-  );
+export const selectBooksIdsByType = (state, typeId) =>
+  selectBooks(state)
+    .filter((book) => book.type === selectBookModule(state).types[typeId])
+    .map((book) => book.id);
 
 export const selectBooksReviewsIds = (state, bookId) =>
   selectBooks(state)[bookId].reviews;

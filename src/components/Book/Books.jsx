@@ -2,15 +2,18 @@ import { BookButtons } from "../BookButtons/BookButtons";
 
 import styles from "./style.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectBookById } from "../../store/book/selectors";
 
-export const Book = ({ book, counterPlace }) => {
+export const Book = ({ bookId, counterPlace }) => {
+  const book = useSelector((state) => selectBookById(state, bookId));
   if (!book) {
     return <h1>Ошибка. Книги не найдены</h1>;
   }
   return (
     <article className={styles.books}>
       <div>
-        <Link to={`/reviews/${book.id}`}>
+        <Link to={`/reviews/${book.id}`} className={styles.books__book_link}>
           <h2 className={styles.books__book_title}>{book.title}</h2>
         </Link>
         <p className={styles.books__book_text}>{book.author}</p>

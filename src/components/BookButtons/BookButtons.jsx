@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectBookCount } from "../../store/cart/selectors";
+import { selectBookCountByBookId } from "../../store/cart/selectors";
 import { cartSlice } from "../../store/cart";
 
 import styles from "./style.module.css";
 
 export const BookButtons = ({ place, bookId }) => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => selectBookCount(state, bookId));
+  const count = useSelector((state) => selectBookCountByBookId(state, bookId));
   return (
     <section
       className={

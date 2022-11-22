@@ -1,5 +1,10 @@
 .books__book_title {
+    color: black;
     font-weight: bold;
+}
+
+.books__book_link {
+    text-decoration: none;
 }
 
 .books__book__right {

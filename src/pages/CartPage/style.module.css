@@ -1,0 +1,11 @@
+.main__cartPage {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+}
+
+.main__reviewPage {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 2% 0 2%;
+}

@@ -1,0 +1,9 @@
+.total__main {
+    display: flex;
+    flex-direction: row;
+}
+
+.total__price {
+    color: black;
+    font-weight: bold;
+}
